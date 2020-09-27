@@ -1,13 +1,15 @@
-# this needs some memory - close unnecessary stuff before running it
 from vedo import spher2cart, Volume, loadTransform, settings
-from vedo import Point, Points, printc, closePlotter
+from vedo import Point, Points, printc, closePlotter, ask
 import heart_database as hdb
 import numpy as np
 
-dpath = hdb.data_path_ko
-dataset = hdb.dataset_ko
-# refheart= 'LQR_M_JJ_1819_wt_2.vti' # ->THE SACRED REF for wt
-refheart= 'LQR_M_JJ_1819_ko_3.vti' # ->THE SACRED REF for KO
+ask('this needs lots of memory - close unnecessary apps before running it',
+    'then press return')
+
+dpath = hdb.data_path_wt
+dataset = hdb.dataset_wt
+refheart= 'LQR_M_JJ_1819_wt_2.vti' # ->THE SACRED REF for wt
+# refheart= 'LQR_M_JJ_1819_ko_3.vti' # ->THE SACRED REF for KO
 
 vref = Volume(dpath+refheart)
 vref_center = Point(vref.center(), c='g', alpha=0.6, r=20)

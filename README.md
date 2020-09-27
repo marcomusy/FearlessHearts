@@ -1,17 +1,123 @@
-https://en.wikipedia.org/wiki/Heart_development#:~:text=Heart%20development%20(also%20known%20as,called%20the%20primitive%20heart%20tube.
+# Fearless Hearts
 
-https://www.youtube.com/watch?v=-d2UfOePgZw
-"Cardiac Development' by Lisa McCabe for OPENPediatrics
+Create a timecourse for the heart development.
 
-https://www.youtube.com/watch?v=5DIUk9IXUaI
-Heart embryology video
+The algorithm is completely general and can be applied to any dataset.
+
+![](https://user-images.githubusercontent.com/32848391/94369891-ad9d9680-00ec-11eb-8efc-960416a5a0d0.png)
+
+
+
+
+## Datasets
+
+Download them from server: ...
+
+
+
+
+
+## Pipeline
+
+Follow the pipeline steps below to reproduce the analysis results.
+
+---
+#### `python 0__compress_data.py`
+- Description: can be skipped as data is ready for use. Only here for reference.
+
+![](https://user-images.githubusercontent.com/32848391/94371727-f2c7c580-00f8-11eb-8175-98cd60b0d0cd.png)
+
+---
+#### `python 1__manually_align.py`
+- Description: manually adjust alignment of different heart samples to a common frame
+
+![](https://user-images.githubusercontent.com/32848391/94369906-c0b06680-00ec-11eb-916a-29e0556bc937.png)
+
+---
+#### `python 2a_make_histos.py`
+- Description: make some histograms of the scalar along some ray
+
+![image](https://user-images.githubusercontent.com/32848391/94370284-6369e480-00ef-11eb-8235-458902c97ef1.png)
+
+![image](https://user-images.githubusercontent.com/32848391/94370309-86949400-00ef-11eb-9b21-d4163de78c8f.png)
+
+---
+#### `python 2b_probe_vol.py`
+- Description: more visualizations of the volume probing
+
+![image](https://user-images.githubusercontent.com/32848391/94370391-11758e80-00f0-11eb-84b9-828b9d523a9d.png)
+
+---
+#### `python 3__generate_rays.py`
+- Description: probe volume and save a polydata which is a cloud of point. Files are produced to the local path. They can be visualized with command e.g.:
+`vedo -n -p 5 -a 0.02 -c w -x1 *2425*.vtk`. If all looks OK move files to data/wt or data/ko.
+
+![image](https://user-images.githubusercontent.com/32848391/94370678-a2009e80-00f1-11eb-99a7-7dcf8b7582ef.png)
+
+
+---
+#### `python 4a_expand_plot.py`
+- Description: plot scalar values on a specific radius shell for test:
+
+![image](https://user-images.githubusercontent.com/32848391/94370795-569ac000-00f2-11eb-94ea-506aa02bd978.png)
+
+---
+#### `python 4b_clm_plot.py`
+- Description: plot the spherical harmonics expansion for the above test:
+
+![image](https://user-images.githubusercontent.com/32848391/94370869-c610af80-00f2-11eb-9828-5c36edade1ac.png)
+
+---
+#### `python 5__write_clm.py`
+- Description: generate and save a numpy array `clm_data.npy` with the Clm spherical harmonic coefficients for all the time points
+
+![step5](https://user-images.githubusercontent.com/32848391/94371848-bc3e7a80-00f9-11eb-8f07-16075893844e.gif)
+
+
+---
+#### `python 6__plot_splined_clm.py`
+- Description: make 50 plots of the spherical harm coefficients visualizing the time variable for each one. Pressing return takes to the next radial shell.
+
+![step6](https://user-images.githubusercontent.com/32848391/94371751-1ee34680-00f9-11eb-9aaf-ce93ca54efc4.gif)
+
+
+---
+#### `python 7a_plot_six_clouds.py`
+- Description: plot now for each time point the reconstructed point clouds (using the sph coefficients) with a threshold to cut off points that are below some value
+
+![image](https://user-images.githubusercontent.com/32848391/94371614-14747d00-00f8-11eb-8760-1e1c288df60e.png)
+
+
+---
+#### `python 7b_interp_clouds.py`
+- Description: interpolate the above time points to generate a continous (small stepped) time course. Interpolation is done by splining all the `Clm` coefficients.
+
+![step7b](https://user-images.githubusercontent.com/32848391/94372187-00327f00-00fc-11eb-88b2-dd8f5dbdff51.gif)
+
+
+---
+#### `python 8a_write_volumes.py`
+- Description: generate as many volumes as the nr of interpolated point clouds. Points in space are spacially interpolated onto the regular grid of a Volume object (made of voxels). Isosurfaces are also generated (for 3 different thresholds):
+
+![image](https://user-images.githubusercontent.com/32848391/94372279-88b11f80-00fc-11eb-859f-ba25085c87eb.png)
+
+
+---
+#### `python 8b_write_scaled_isos.py`
+- Description: build isosurfaces for all the generated volumes using some threshold value. The absolute size is also recovered from a fit of the original sizes, to take into account the biological growth of the tissues
+
+![h_timecourse_wt](https://user-images.githubusercontent.com/32848391/94372352-f4938800-00fc-11eb-84e8-9804aae3c27c.gif)
+
+![](https://user-images.githubusercontent.com/32848391/94369930-e5a4d980-00ec-11eb-980c-9b012cc821c4.png)
+
+
+## References
 
 Ten years ago, a population of cardiac progenitor cells was identified
  in pharyngeal mesoderm that gives rise to a major part of the amniote heart.
  These multipotent progenitor cells, termed the second heart field (SHF),
  contribute progressively to the poles of the elongating heart tube during
   looping morphogenesis, giving rise to myocardium, smooth muscle, and endothelial cells.
-https://pubmed.ncbi.nlm.nih.gov/22449840/
 
 Arid3b, a member of the conserved ARID family of transcription
 factors, is essential for mouse embryonic development but its precise
@@ -30,3 +136,13 @@ Arid3b is thus required for heart development by regulating
 the motility and differentiation of heart progenitors. These findings
 identify Arid3b as a candidate gene involved in the aetiology of human
 congenital malformations.
+
+- _[“Arid3b is essential for second heart field cell deployment and heart patterning”](https://dev.biologists.org/content/141/21/4168)_, J.J. Sanz-Esquerro et al., Development (2014) 141, 4168-4181 doi:10.1242/dev.109918
+- [The second heart field](https://pubmed.ncbi.nlm.nih.gov/22449840/)
+- [Heart Development (wikipedia)](https://en.wikipedia.org/wiki/Heart_development).
+
+![embl](https://user-images.githubusercontent.com/32848391/94371851-c3658880-00f9-11eb-9c2a-d418adb93d59.gif)
+
+
+
+

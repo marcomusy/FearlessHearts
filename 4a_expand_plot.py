@@ -6,7 +6,7 @@ import heart_database as hdb
 
 lmax=24
 
-vpts = Points(hdb.data_path_ko + 'LQR_M_JJ_1819_ko_3_rays.vtk')
+vpts = Points(hdb.data_path_wt + 'LQR_M_JJ_1819_wt_3_rays.vtk')
 
 pts = vpts.points()
 arr = vpts.getPointArray('input_scalars')

@@ -4,8 +4,7 @@ from heart_database import dataset_wt, dataset_ko, grid_res, radius_res
 import numpy as np
 import pyshtools
 
-dset = dataset_ko # the db that we want to fill now
-# settings.screeshotScale=2
+dset = dataset_wt # the db that we want to fill now
 vd = Video('step5.mp4', duration=16)
 
 # For each group of hearts

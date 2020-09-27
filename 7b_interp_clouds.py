@@ -4,8 +4,8 @@ from heart_database import data_path_wt, data_path_ko, nsomites, spline, radius_
 import numpy as np
 import pyshtools
 
-dpath = data_path_ko
-dset = load(dpath+'clm_ko_data.npy') # load regular numpy file
+dpath = data_path_wt
+dset = load(dpath+'clm_wt_data.npy') # load regular numpy file
 
 printc(dset['comment'], '- loaded.', c='g', invert=True)
 

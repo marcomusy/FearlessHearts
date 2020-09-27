@@ -4,8 +4,8 @@ import heart_database as hdb
 import numpy as np
 import pyshtools
 
-dpath = hdb.data_path_ko
-dset = load(dpath+'clm_ko_data.npy') # load regular numpy file
+dpath = hdb.data_path_wt
+dset = load(dpath+'clm_wt_data.npy') # load regular numpy file
 
 printc(dset['comment'], '- loaded.', c='g', invert=True)
 

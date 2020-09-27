@@ -3,8 +3,8 @@ from vedo import Text2D, load, Line, interactive, settings
 import heart_database as hdb
 import numpy as np
 
-dpath = hdb.data_path_ko
-clm_data = load(dpath+'clm_ko_data.npy') # load regular numpy file
+dpath = hdb.data_path_wt
+clm_data = load(dpath+'clm_wt_data.npy') # load regular numpy file
 
 printc(clm_data['comment'], 'loaded')
 # 'ray_points', 'set10', 'set14', 'set1819', 'set2122', 'set2425', 'set2829'

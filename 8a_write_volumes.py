@@ -1,7 +1,7 @@
 from vedo import show, interpolateToVolume, pyplot, load, ProgressBar
 import os
 
-outdir = 'output/ko/'
+outdir = 'output/wt/'
 
 ######################################################### test plot
 apts = load(outdir+'reco_clouds/nrsom_22.6.vtk')
