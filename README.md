@@ -23,17 +23,20 @@ Follow the pipeline steps below to reproduce the analysis results.
 
 ![](https://user-images.githubusercontent.com/32848391/94371727-f2c7c580-00f8-11eb-8175-98cd60b0d0cd.png)
 
+
 ---
 #### `python 1__manually_align.py`
 - _Description:_ manually adjust alignment of different heart samples to a common frame
 
 ![](https://user-images.githubusercontent.com/32848391/94369906-c0b06680-00ec-11eb-916a-29e0556bc937.png)
 
+
 ---
 #### `python 2a_make_histos.py`
 - _Description:_ make some histograms of the scalar along some ray
 
 ![image](https://user-images.githubusercontent.com/32848391/94369915-c9a13800-00ec-11eb-86e0-0429198c392a.png)
+
 ![image](https://user-images.githubusercontent.com/32848391/94370309-86949400-00ef-11eb-9b21-d4163de78c8f.png)
 
 ---
@@ -41,6 +44,7 @@ Follow the pipeline steps below to reproduce the analysis results.
 - _Description:_ more visualizations of the volume probing
 
 ![image](https://user-images.githubusercontent.com/32848391/94370391-11758e80-00f0-11eb-84b9-828b9d523a9d.png)
+
 
 ---
 #### `python 3__generate_rays.py`
@@ -56,14 +60,18 @@ Follow the pipeline steps below to reproduce the analysis results.
 
 ![image](https://user-images.githubusercontent.com/32848391/94370795-569ac000-00f2-11eb-94ea-506aa02bd978.png)
 
+
 ---
 #### `python 4b_clm_plot.py`
-- Description: plot the spherical harmonics expansion for the above test:
-![image](https://user-images.githubusercontent.com/32848391/94370869-c610af80-00f2-11eb-9828-5c36edade1ac.png)
+- _Description:_ plot the spherical harmonics expansion for the above test:
+
+![image](https://user-images.githubusercontent.com/32848391/94369921-d756bd80-00ec-11eb-9ba3-69464ed5dc7a.png)
+
 
 ---
 #### `python 5__write_clm.py`
-- _Description:_ generate and save a numpy array `clm_data.npy` with the Clm spherical harmonic coefficients for all the time points
+- _Description:_ generate and save a numpy array `clm_data.npy` with the `Clm` spherical harmonic coefficients for all the time points
+
 ![step5](https://user-images.githubusercontent.com/32848391/94371848-bc3e7a80-00f9-11eb-8f07-16075893844e.gif)
 
 
@@ -107,10 +115,10 @@ Follow the pipeline steps below to reproduce the analysis results.
 ## References
 
 Ten years ago, a population of cardiac progenitor cells was identified
- in pharyngeal mesoderm that gives rise to a major part of the amniote heart.
- These multipotent progenitor cells, termed the second heart field (SHF),
- contribute progressively to the poles of the elongating heart tube during
-  looping morphogenesis, giving rise to myocardium, smooth muscle, and endothelial cells.
+in pharyngeal mesoderm that gives rise to a major part of the amniote heart.
+These multipotent progenitor cells, termed the second heart field (SHF),
+contribute progressively to the poles of the elongating heart tube during
+looping morphogenesis, giving rise to myocardium, smooth muscle, and endothelial cells.
 
 _Arid3b_, a member of the conserved ARID family of transcription
 factors, is essential for mouse embryonic development but its precise
@@ -133,7 +141,6 @@ congenital malformations.
 - _[“Arid3b is essential for second heart field cell deployment and heart patterning”](https://dev.biologists.org/content/141/21/4168)_, J.J. Sanz-Esquerro et al., Development (2014) 141, 4168-4181 doi:10.1242/dev.109918
 - [The second heart field](https://pubmed.ncbi.nlm.nih.gov/22449840/)
 - [Heart Development (wikipedia)](https://en.wikipedia.org/wiki/Heart_development).
-
 
 
 [![vedo_powered](https://user-images.githubusercontent.com/32848391/94372929-13e0e400-0102-11eb-938c-bc0274d57108.png)](https://github.com/marcomusy/vedo)
