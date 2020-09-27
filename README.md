@@ -10,7 +10,7 @@ The algorithm is completely general and can be applied to any dataset.
 
 ## Datasets
 
-Download them from server: ...
+Download them from server: `/g/sharpeba/scratch/marco/FearlessHearts/data`
 
 
 ## Pipeline
