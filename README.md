@@ -1,20 +1,14 @@
 # Fearless Hearts
 
-Create a timecourse for the heart development.
+Create a continuous timecourse for the heart development starting from a limited number of samples acquired at different timepoints.
 
 The algorithm is completely general and can be applied to any dataset.
 
 ![](https://user-images.githubusercontent.com/32848391/94369891-ad9d9680-00ec-11eb-8efc-960416a5a0d0.png)
 
-
-
-
 ## Datasets
 
 Download them from server: ...
-
-
-
 
 
 ## Pipeline
@@ -38,7 +32,6 @@ Follow the pipeline steps below to reproduce the analysis results.
 - Description: make some histograms of the scalar along some ray
 
 ![image](https://user-images.githubusercontent.com/32848391/94370284-6369e480-00ef-11eb-8235-458902c97ef1.png)
-
 ![image](https://user-images.githubusercontent.com/32848391/94370309-86949400-00ef-11eb-9b21-d4163de78c8f.png)
 
 ---
@@ -64,13 +57,11 @@ Follow the pipeline steps below to reproduce the analysis results.
 ---
 #### `python 4b_clm_plot.py`
 - Description: plot the spherical harmonics expansion for the above test:
-
 ![image](https://user-images.githubusercontent.com/32848391/94370869-c610af80-00f2-11eb-9828-5c36edade1ac.png)
 
 ---
 #### `python 5__write_clm.py`
 - Description: generate and save a numpy array `clm_data.npy` with the Clm spherical harmonic coefficients for all the time points
-
 ![step5](https://user-images.githubusercontent.com/32848391/94371848-bc3e7a80-00f9-11eb-8f07-16075893844e.gif)
 
 
@@ -119,20 +110,20 @@ Ten years ago, a population of cardiac progenitor cells was identified
  contribute progressively to the poles of the elongating heart tube during
   looping morphogenesis, giving rise to myocardium, smooth muscle, and endothelial cells.
 
-Arid3b, a member of the conserved ARID family of transcription
+_Arid3b_, a member of the conserved ARID family of transcription
 factors, is essential for mouse embryonic development but its precise
 roles are poorly understood.
-Arid3b is expressed in the myocardium of the tubular heart and in second heart field
+_Arid3b_ is expressed in the myocardium of the tubular heart and in second heart field
 progenitors.
 
-Arid3b-deficient embryos show cardiac abnormalities,
+_Arid3b_-deficient embryos show cardiac abnormalities,
 including a notable shortening of the poles, absence of myocardial
 differentiation and altered patterning of the atrioventricular canal,
 which also lacks epithelial-to-mesenchymal transition.
 Proliferation and death of progenitors as well as early patterning of the heart
 appear normal.
 
-Arid3b is thus required for heart development by regulating
+_Arid3b_ is thus required for heart development by regulating
 the motility and differentiation of heart progenitors. These findings
 identify Arid3b as a candidate gene involved in the aetiology of human
 congenital malformations.
