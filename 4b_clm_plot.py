@@ -1,19 +1,20 @@
 from vedo import Points, show, Glyph, Cube
-import pyshtools, heart_database as hdb
+import pyshtools
+import heart_database as hdb
 import numpy as np
 
 dpath = hdb.data_path_wt
 
 vpts = Points(dpath+'LQR_M_JJ_1819_wt_1_rays.vtk')
-rn = 28 # choose the radius shell
+rn = 28  # choose the radius shell
 
 pts = vpts.points()
 arr = vpts.getPointArray('input_scalars')
 Mpts = pts.reshape(hdb.radius_res, hdb.grid_res*2*hdb.grid_res, 3)
 Marr = arr.reshape(hdb.radius_res, hdb.grid_res*2*hdb.grid_res)
 
-ptsn = Mpts[rn,:,:]
-arrn = Marr[rn,:]
+ptsn = Mpts[rn, :, :]
+arrn = Marr[rn, :]
 
 grid = pyshtools.SHGrid.from_array(arrn.reshape(hdb.grid_res, 2*hdb.grid_res))
 
@@ -35,11 +36,9 @@ cpts = np.array(cpts)
 zs = np.power(np.abs(np.array(zs)), 1/3)
 
 pvals = Points(cpts).addPointArray(zs, 'clm')
-cvals = Glyph(pvals, Cube().scale([1,1,1]), scaleByScalar=True).cmap('rainbow')
+cvals = Glyph(pvals, Cube().scale([1, 1, 1]), scaleByScalar=True).cmap('rainbow')
 cvals.lighting('ambient', diffuse=0.2)
-cvals.addScalarBar3D(title="|C_lm | [arb.units]",c='w').addPos(2,0,0)
+cvals.addScalarBar3D(title="|C_lm | [arb.units]", c='w').addPos(2, 0, 0)
 show(cvals,
      bg='bb',
-     axes=dict(xrange=(0,25), xtitle='l', ytitle='m', ztitle='C_lm', yHighlightZero=1))
-
-
+     axes=dict(xrange=(0, 25), xtitle='l', ytitle='m', ztitle='C_lm', yHighlightZero=1))

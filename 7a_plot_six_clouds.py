@@ -5,13 +5,14 @@ import numpy as np
 import pyshtools
 
 dpath = hdb.data_path_wt
-dset = load(dpath+'clm_wt_data.npy') # load regular numpy file
+dset = load(dpath+'clm_wt_data.npy')  # load regular numpy file
 
 printc(dset['comment'], '- loaded.', c='g', invert=True)
 
 iat = 0
 for name in dset.keys():
-    if 'set' not in name: continue
+    if 'set' not in name:
+        continue
 
     clms = dset[name]['clms']
     clms_average_on_hearts = np.mean(clms, axis=0)
@@ -29,7 +30,7 @@ for name in dset.keys():
                 ph = np.deg2rad(long)
                 p = spher2cart(shell, th, ph)
                 value = arr_shell[i][j]
-                if value>40:
+                if value > 40:
                     pts.append(p)
                     scals.append(value)
 
