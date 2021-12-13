@@ -1,10 +1,11 @@
-from vedo import Points, show, spher2cart, printc
+from vedo import Points, show, spher2cart, printc, buildAxes
 from scipy.interpolate import griddata
 import pyshtools
 import numpy as np
 import heart_database as hdb
 
-lmax=24
+
+lmax = 24
 
 vpts = Points(hdb.data_path_wt + 'LQR_M_JJ_1819_wt_3_rays.vtk')
 
@@ -13,9 +14,9 @@ arr = vpts.getPointArray('input_scalars')
 Mpts = pts.reshape(hdb.radius_res, hdb.grid_res*2*hdb.grid_res, 3)
 Marr = arr.reshape(hdb.radius_res, hdb.grid_res*2*hdb.grid_res)
 
-rn = 28
-ptsn = Mpts[rn,:,:]
-arrn = Marr[rn,:]
+rn = 20
+ptsn = Mpts[rn, :, :]
+arrn = Marr[rn, :]
 
 grid = pyshtools.SHGrid.from_array(arrn.reshape(hdb.grid_res, 2*hdb.grid_res))
 
@@ -47,7 +48,7 @@ for i, long in enumerate(np.linspace(0, 360, num=grid_reco_finer.shape[1], endpo
     for j, lat in enumerate(np.linspace(90, -90, num=grid_reco_finer.shape[0], endpoint=True)):
         th = np.deg2rad(90 - lat)
         ph = np.deg2rad(long)
-        r= np.sqrt(grid_reco_finer[j][i]+10) ##### NOTE !!! sqrt(..+10) only for better viz
+        r = np.sqrt(grid_reco_finer[j][i]+10)  # NOTE !!! sqrt(..+10) only for better viz
         p = spher2cart(r, th, ph)
         pts2.append(p)
 
@@ -56,7 +57,16 @@ mesh2 = Points(pts2, r=5, c="r", alpha=0.5)
 vmypts = Points(ptsn, r=10).cmap('jet', arrn)
 vmypts.addScalarBar3D(title='scalar for r='+str(rn))
 
+cam = dict(pos=(249, -484, 652),
+           focalPoint=(16.5, -11.8, -10.9),
+           viewup=(-0.352, 0.699, 0.622),
+           distance=847,
+           clippingRange=(431, 1.37e+3))
+
+# myaxes = buildAxes(xrange=(-100, 100), yrange=(-100, 100), zrange=(-100, 100),)
+# show(vmypts, myaxes, axes=0,  camera=cam)
+# quit()
+
 show(vmypts, at=0, N=2, axes=1, sharecam=0)
 show(mesh2, 'Spherical harmonics\nexpansion of order '+str(lmax),
      at=1, axes=12, interactive=True)
-
