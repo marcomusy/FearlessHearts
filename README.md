@@ -10,7 +10,7 @@ The algorithm is completely general and can be applied to any dataset.
 
 ## Datasets
 
-Download them from server: `/g/sharpeba/scratch/marco/FearlessHearts/data`
+All the data can be dowloaded from --> https://www.ebi.ac.uk/biostudies/studies/S-BIAD441 (folder `/hearts/`).
 
 
 ## Pipeline
